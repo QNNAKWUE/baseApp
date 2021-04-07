@@ -1,0 +1,10 @@
+{
+  "name": "taskListApp",
+  "version": "1.0.0",
+  "description": "A Task Listing App",
+  "main": "index.js",
+  "repository": "git@github.com:QNNAKWUE/taskListApp.git",
+  "author": "QNNAKWUE",
+  "license": "ISC",
+  "private": false
+}
