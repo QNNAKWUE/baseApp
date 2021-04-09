@@ -1,10 +1,28 @@
 {
-  "name": "taskListApp",
+  "name": "tasklistapp",
   "version": "1.0.0",
   "description": "A Task Listing App",
   "main": "index.js",
-  "repository": "git@github.com:QNNAKWUE/taskListApp.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/QNNAKWUE/taskListApp.git"
+  },
   "author": "QNNAKWUE",
   "license": "ISC",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.12"
+  },
+  "bugs": {
+    "url": "https://github.com/QNNAKWUE/taskListApp/issues"
+  },
+  "homepage": "https://github.com/QNNAKWUE/taskListApp#readme",
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "babel-node -- ./server/index.js"
+  }
 }
