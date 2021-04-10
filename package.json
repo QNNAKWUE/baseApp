@@ -33,5 +33,6 @@
     "test": "mocha",
     "start:server": "babel-node -- ./server/index.js",
     "lint": "./node_modules/.bin/eslint"
+    
   }
 }
