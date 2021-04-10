@@ -30,7 +30,7 @@
   "homepage": "https://github.com/QNNAKWUE/taskListApp#readme",
   "dependencies": {},
   "scripts": {
-    "test": "mocha",
+    "test": "./node_modules/gulp/bin/gulp.js test",
     "start:server": "babel-node -- ./server/index.js",
     "lint": "./node_modules/.bin/eslint"
     
