@@ -28,11 +28,12 @@
     "url": "https://github.com/QNNAKWUE/taskListApp/issues"
   },
   "homepage": "https://github.com/QNNAKWUE/taskListApp#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "scripts": {
-    "test": "./node_modules/gulp/bin/gulp.js test",
+    "test": "mocha",
     "start:server": "babel-node -- ./server/index.js",
     "lint": "./node_modules/.bin/eslint"
-    
   }
 }

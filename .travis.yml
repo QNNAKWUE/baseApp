@@ -1,5 +1,6 @@
 language: node_js
-node_js:
-  - 12.18
-
-cache: npm
+node_js: 
+  - "stable"
+cache:
+  directories:
+    - "node_modules"
