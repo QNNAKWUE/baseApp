@@ -15,6 +15,7 @@
     "@babel/core": "^7.13.14",
     "@babel/node": "^7.13.13",
     "@babel/preset-env": "^7.13.12",
+    "@babel/register": "^7.13.14",
     "chai": "^4.3.4",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -28,9 +29,11 @@
     "url": "https://github.com/QNNAKWUE/taskListApp/issues"
   },
   "homepage": "https://github.com/QNNAKWUE/taskListApp#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/*.spec.js   --require @babel/register --no-timeout  --exit",
     "start:server": "babel-node -- ./server/index.js",
     "lint": "./node_modules/.bin/eslint"
   }
