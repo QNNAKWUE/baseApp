@@ -23,7 +23,8 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "mocha": "^8.3.2"
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7"
   },
   "bugs": {
     "url": "https://github.com/QNNAKWUE/taskListApp/issues"
@@ -34,8 +35,9 @@
     "express": "^4.17.1"
   },
   "scripts": {
+    "build": "babel index.js -d dist",
+    "start": "npm run build && nodemon dist/index.js",
     "test": "mocha test/*.spec.js   --require @babel/register --no-timeout  --exit",
-    "start:server": "babel-node -- ./server/index.js",
     "lint": "./node_modules/.bin/eslint"
   }
 }
