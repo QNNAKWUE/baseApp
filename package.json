@@ -35,8 +35,8 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "build": "babel index.js -d dist",
-    "start": "npm run build && nodemon dist/index.js",
+    "build": "babel serevr/index.js -d dist",
+    "start": "nodemon server/index.js",
     "test": "mocha test/*.spec.js   --require @babel/register --no-timeout  --exit",
     "lint": "./node_modules/.bin/eslint"
   }
