@@ -25,3 +25,5 @@ class Sanitize {
 
 
 export default Sanitize;
+
+

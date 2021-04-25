@@ -1,4 +1,6 @@
 import bcrypt from 'bcrypt';
+import { has } from 'config';
+import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 class UserController {
@@ -49,6 +51,37 @@ class UserController {
       });
     }
   }
+
+  static async loginController(req, res){
+    const user = await User.findOne({email: req.body.email});
+    if(!user){
+      return res.status(400).send({
+        success: 'false',
+        message: 'Email does not exist'
+      });
+    }
+    const validPassword = await bcrypt.compare((user) => user.password === hashedPwd);
+    if(!validPassword){
+      return res.status(409).send({
+        success: 'false',
+        message: 'password do not match'
+      });
+    }
+    //generate token after a successful login
+    const token = jwt.sign({id:user._id, email: user.email}, process.env.TOKEN_SECRET);
+    try{
+      return res.header('auth-token', token).send({'token': token});
+    }catch(err){
+      if(err){
+        return res.status(409).send({
+          success: 'false',
+          message: 'Invalid email/password'
+        });
+      }
+    }
+  }
 }
+
+
 
 export default UserController;

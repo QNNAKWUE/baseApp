@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes';
 
-dotenv.config();
+dotenv.config({path: './config/config.env'});
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 //register routes
 
-app.use(userRoutes);
+app.use('/api/UserController', userRoutes);
 
 app.get('/', (req, res) => res.status(200).json({ message: 'Welcome to my TaskList API' }));
 
