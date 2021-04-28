@@ -34,13 +34,15 @@
   "homepage": "https://github.com/QNNAKWUE/taskListApp#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
   },
   "scripts": {
     "build": "babel serevr/index.js -d dist",
     "start": "nodemon  --exec babel-node server/index.js",
-    "test": "mocha test/**.spec.js --recursive  --require @babel/register --no-timeout  --exit",
+    "test": "mocha test/**.login.js --recursive  --require @babel/register --no-timeout  --exit",
     "lint": "./node_modules/.bin/eslint"
   }
 }
