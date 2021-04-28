@@ -21,6 +21,16 @@ class Sanitize {
 
     return next();
   }
+
+  static loginSanitizer(req, res, next) {
+    const {email, password} = req.body;
+    const response = (error) => res.status(400).send({status: 'error', error});
+
+    if(Validator.checkEmpty(email)) return response('please enter your email');
+    if(Validator.checkEmpty(password)) return response('please enter your password');
+
+    next();
+  }
 }
 
 

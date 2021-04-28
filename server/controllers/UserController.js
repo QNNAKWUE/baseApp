@@ -53,7 +53,8 @@ class UserController {
   }
 
   static async loginController(req, res){
-    const user = await User.findOne({email: req.body.email});
+    try{
+    const user = await User.find((user) => user.email === email);
     if(!user){
       return res.status(409).send({
         success: 'false',
@@ -69,15 +70,13 @@ class UserController {
     }
     //generate token after a successful login
     const token = jwt.sign({id:user._id, email: user.email}, process.env.TOKEN_SECRET);
-    try{
-      return res.header('auth-token', token).send({'email': user.email, 'id': 'user._id'});
+    
+      return res.header('auth-token', token).send({'id': 'user._id', 'email': user.email});
     }catch(err){
-      if(err){
-        return res.status(409).send({
+        return res.status(500).send({
           success: 'false',
-          message: 'Invalid email/password'
+          message: 'Server error'
         });
-      }
     }
   }
 }
