@@ -42,7 +42,7 @@
   "scripts": {
     "build": "babel serevr/index.js -d dist",
     "start": "nodemon  --exec babel-node server/index.js",
-    "test": "mocha test/**.login.js --recursive  --require @babel/register --no-timeout  --exit",
+    "test": "mocha test/**.spec.js --recursive  --require @babel/register --no-timeout  --exit",
     "lint": "./node_modules/.bin/eslint"
   }
 }

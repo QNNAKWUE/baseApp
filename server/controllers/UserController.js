@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-import { has } from 'config';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
