@@ -55,7 +55,7 @@ class UserController {
   static async loginController(req, res){
     const user = await User.findOne({email: req.body.email});
     if(!user){
-      return res.status(400).send({
+      return res.status(409).send({
         success: 'false',
         message: 'Email does not exist'
       });

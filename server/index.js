@@ -12,7 +12,8 @@ app.use(express.json());
 
 //register routes
 
-app.use('/api/UserController', userRoutes);
+app.use(userRoutes);
+
 
 app.get('/', (req, res) => res.status(200).json({ message: 'Welcome to my TaskList API' }));
 

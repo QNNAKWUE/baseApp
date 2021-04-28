@@ -4,7 +4,6 @@ import UserController from '../controllers/UserController';
 
 const router = Router();
 
-router.post('/signupController', Sanitize.signupSanitizer, UserController.signupController);
-router.post('/loginController', UserController.loginController);
+router.post('/api/v1/auth/signup', Sanitize.signupSanitizer, UserController.signupController, UserController.loginController);
 
 export default router;
