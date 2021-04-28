@@ -70,7 +70,7 @@ class UserController {
     //generate token after a successful login
     const token = jwt.sign({id:user._id, email: user.email}, process.env.TOKEN_SECRET);
     try{
-      return res.header('auth-token', token).send({'token': token});
+      return res.header('auth-token', token).send({'email': user.email, 'id': 'user._id'});
     }catch(err){
       if(err){
         return res.status(409).send({
