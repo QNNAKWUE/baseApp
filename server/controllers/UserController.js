@@ -19,8 +19,8 @@ class UserController {
       }
       // If the user does not exist, create an account
 
-      // hash the password, 
-      // we do not save raw password in the database for security purposes 
+      // hash the password,
+      // we do not save raw password in the database for security purposes
       // so that they are not compromised
       const hashedPwd = await bcrypt.hash(password, 10);
       const newUser = {
@@ -52,35 +52,34 @@ class UserController {
     }
   }
 
-  static async loginController(req, res){
-    try{
-    const user = await User.find((user) => user.email === email);
-    if(!user){
-      return res.status(409).send({
-        success: 'false',
-        message: 'Email does not exist'
-      });
-    }
-    const validPassword = await bcrypt.compare((user) => user.password === hashedPwd);
-    if(!validPassword){
-      return res.status(409).send({
-        success: 'false',
-        message: 'password do not match'
-      });
-    }
-    //generate token after a successful login
-    const token = jwt.sign({id:user._id, email: user.email}, process.env.TOKEN_SECRET);
-    
-      return res.header('auth-token', token).send({'id': 'user._id', 'email': user.email});
-    }catch(err){
-        return res.status(500).send({
+  static async loginController(req, res) {
+    const { password, email } = req.body;
+    try {
+      const findUser = await User.find((user) => user.email === email);
+      if (!findUser) {
+        return res.status(409).send({
           success: 'false',
-          message: 'Server error'
+          message: 'Email does not exist',
         });
+      }
+      const validPassword = await bcrypt.compare(password, findUser.password);
+      if (!validPassword) {
+        return res.status(409).send({
+          success: 'false',
+          message: 'password do not match',
+        });
+      }
+      // generate token after a successful login
+      const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET);
+
+      return res.status(200).send({ token, id: findUser.id });
+    } catch (err) {
+      return res.status(500).send({
+        success: 'false',
+        message: 'Server error',
+      });
     }
   }
 }
-
-
 
 export default UserController;
