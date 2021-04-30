@@ -62,7 +62,7 @@ class UserController {
         });
       }
 
-      const validPassword = await bcrypt.compareSync(password, findUser.password);
+      const validPassword = await bcrypt.compare(password, findUser.password);
       if (!validPassword) {
         return res.status(409).send({
           success: 'false',
@@ -70,7 +70,7 @@ class UserController {
         });
       }
       // generate token after a successful login
-      const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET);
+      const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET, '24h');
       const output = { token, id: findUser.id };
       return res.status(200).send({ data: output });
     } catch (err) {
