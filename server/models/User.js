@@ -4,7 +4,7 @@ const User = [{
   id: 1,
   fullname: 'Nonso Amadi',
   email: 'nonsoamadi@aol.com',
-  password: bcrypt.hash('password', 10),
+  password: bcrypt.hash('password', 'salt'),
 }];
 
 export default User;
