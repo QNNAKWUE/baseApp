@@ -52,16 +52,17 @@ class UserController {
   }
 
   static async loginController(req, res) {
-    const { password, email } = req.body;
+    const { email, password } = req.body;
     try {
       const findUser = await User.find((user) => user.email === email);
       if (!findUser) {
-        return res.status(409).send({
+        return res.status(400).send({
           success: 'false',
           message: 'Email does not exist',
         });
       }
-      const validPassword = await bcrypt.compare(password, findUser.password);
+
+      const validPassword = await bcrypt.compareSync(password, findUser.password);
       if (!validPassword) {
         return res.status(409).send({
           success: 'false',
@@ -70,9 +71,10 @@ class UserController {
       }
       // generate token after a successful login
       const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET);
-
-      return res.status(200).send({ token, id: findUser.id });
+      const output = { token, id: findUser.id };
+      return res.status(200).send({ data: output });
     } catch (err) {
+      console.log(err);
       return res.status(500).send({
         success: 'false',
         message: 'Server error',

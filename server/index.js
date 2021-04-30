@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes';
 
-dotenv.config({path: './config/config.env'});
+dotenv.config();
 
 const app = express();
 

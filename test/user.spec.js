@@ -3,6 +3,17 @@ import chaiHttp from 'chai-http';
 import app from '../server';
 
 chai.use(chaiHttp);
+// before('Populating the DB', (done)=>{
+//   chai.request(app)
+//   .post('/api/v1/auth/signup')
+//   .send({
+//     fullname: 'whitey',
+//     email: 'jwhitey@gmail.com',
+//     password: 'jwhite',
+//     confirmPassword: 'jwhite'
+//   })
+//   done();
+// })
 
 describe('Auth', () => {
   it('should allow a user to signup', (done) => {
@@ -29,11 +40,27 @@ describe('Auth', () => {
         fullname: 'Nonso Amadi',
         email: 'nonsoamadi@aol.com',
         password: 'password',
-        confirmPassword: 'password'
+        confirmPassword: 'password',
       })
       .end((err, res) => {
         expect(res.status).to.equal(409);
         expect(res.body.message).to.equal('User exists, please login!');
+        done();
+      });
+  });
+});
+
+describe('User should be able to login', () => {
+  it('should login a registered user', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'nonsoamadi@aol.com',
+        password: 'password',
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.data).to.have.all.keys(['id', 'token']);
         done();
       });
   });
