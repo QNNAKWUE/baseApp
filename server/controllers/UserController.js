@@ -70,7 +70,7 @@ class UserController {
         });
       }
       // generate token after a successful login
-      const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET, '24h');
+      const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET);
       const output = { token, id: findUser.id };
       return res.status(200).send({ data: output });
     } catch (err) {
