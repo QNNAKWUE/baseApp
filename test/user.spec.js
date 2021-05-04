@@ -57,7 +57,7 @@ describe('User should be able to login', () => {
       .send({
         email: 'nonsoamadi@aol.com',
         password: 'password',
-        TOKEN_SECRET: 'mySecureKey'
+        TOKEN_SECRET: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJraW1rQGdtYWlsLmNvbSIsImlhdCI6MTYyMDExODI1Mn0.Nym87Jw9mNMgOJ28_8a76NHVRIGWQ_iavtyOZRK5Ryg'
       })
       .end((err, res) => {
         expect(res.status).to.equal(200);
