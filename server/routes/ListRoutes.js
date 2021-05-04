@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Sanitize from '../middlewares/Sanitize';
-import Auth from '../middlewares/Auth';
+import Auth from '../middlewares/auth';
 import ListController from '../controllers/ListController';
 
 const router = Router();
