@@ -32,17 +32,17 @@ class Sanitize {
     return next();
   }
 
-  static listSanitizer(req, res, next){
-   const {name, createdAt, userId} = req.body;
-    const response = (error) => res.status(400).send({status: 'error', error});
+  // static listSanitizer(req, res, next){
+  //  const {name, createdAt, userId} = req.body;
+  //   const response = (error) => res.status(400).send({status: 'error', error});
 
-    if(Validate.checkEmpty(name)) return response('list name cannot be empty');
-    if(Validate.containsNumber(name)) return response('list name cannot contain number');
-    if(Validate.checkEmpty(createdAt)) return response('please input start date');
-    if(Validate.checkEmpty(userId)) return response('please enter your userID');
+  //   if(Validate.checkEmpty(name)) return response('list name cannot be empty');
+  //   if(Validate.containsNumber(name)) return response('list name cannot contain number');
+  //   if(Validate.checkEmpty(createdAt)) return response('please input start date');
+  //   if(Validate.checkEmpty(userId)) return response('please enter your userID');
 
-    return next();
-   }
+  //   return next();
+  //  }
 }
 
 export default Sanitize;

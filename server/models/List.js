@@ -1,9 +1,9 @@
-const List = [{
-    id: 'Integer',
-    name: 'String',
-    createdAt: 'timestamp',
-    updatedAt: 'timestamp',
-    userId: 'Integer'
-}];
+// const List = [{
+//     id: 'Integer',
+//     name: 'String',
+//     createdAt: 'timestamp',
+//     updatedAt: 'timestamp',
+//     userId: 'Integer'
+// }];
 
-export default List;
+// export default List;

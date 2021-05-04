@@ -60,7 +60,7 @@ describe('User should be able to login', () => {
       })
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.data).to.have.all.keys(['id', 'token']);
+        expect(res.body.data).to.have.all.keys(['id']);
         done();
       });
   });
