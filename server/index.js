@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import UserRoutes from './routes/UserRoutes';
+import userRoutes from './routes/userRoutes';
 import ListRoutes from './routes/ListRoutes';
 
 dotenv.config();
@@ -13,7 +13,7 @@ app.use(express.json());
 
 //register routes
 
-app.use(UserRoutes);
+app.use(userRoutes);
 app.use(ListRoutes);
 
 
