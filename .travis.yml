@@ -8,4 +8,4 @@ install:
   - npm install
 script:
   - npm run test
-travis encrypt --add addons.jwt SAUCE_ACCESS_KEY=mySecureKey
+travis encrypt --add addons.jwt TOKEN_SECRET=mySecureKey
