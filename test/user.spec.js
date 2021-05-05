@@ -56,8 +56,7 @@ describe('User should be able to login', () => {
       .post('/api/v1/auth/login')
       .send({
         email: 'nonsoamadi@aol.com',
-        password: 'password',
-        TOKEN_SECRET: 'mySecureKey'
+        password: 'password'
       })
       .end((err, res) => {
         expect(res.status).to.equal(200);
