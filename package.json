@@ -34,8 +34,10 @@
   "homepage": "https://github.com/QNNAKWUE/taskListApp#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
   },
   "scripts": {
     "build": "babel serevr/index.js -d dist",

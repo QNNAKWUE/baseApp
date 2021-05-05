@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 class UserController {
@@ -17,8 +18,8 @@ class UserController {
       }
       // If the user does not exist, create an account
 
-      // hash the password, 
-      // we do not save raw password in the database for security purposes 
+      // hash the password,
+      // we do not save raw password in the database for security purposes
       // so that they are not compromised
       const hashedPwd = await bcrypt.hash(password, 10);
       const newUser = {
@@ -46,6 +47,37 @@ class UserController {
       return res.status(500).send({
         success: false,
         message: 'Server Error',
+      });
+    }
+  }
+
+  static async loginController(req, res) {
+    const { email, password } = req.body;
+    try {
+      const findUser = await User.find((user) => user.email === email);
+      if (!findUser) {
+        return res.status(400).send({
+          success: 'false',
+          message: 'Email does not exist',
+        });
+      }
+
+      const validPassword = await bcrypt.compare(password, findUser.password);
+      if (!validPassword) {
+        return res.status(409).send({
+          success: 'false',
+          message: 'password do not match',
+        });
+      }
+      // generate token after a successful login
+      const token = jwt.sign({ id: findUser.id, email: findUser.email }, process.env.TOKEN_SECRET);
+      const output = { token, id: findUser.id };
+      return res.status(200).send({ data: output });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({
+        success: 'false',
+        message: 'Server error',
       });
     }
   }
