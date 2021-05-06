@@ -9,5 +9,6 @@ router.post('/createList', Auth, Sanitize.listSanitizer, ListController.createLi
 router.get('/getLists', Auth, ListController.getAllList);
 router.get('getList/:id', ListController.getListById);
 router.patch('/updateList/:id', Auth, ListController.updateList);
+router.delete('/deleteList/:id', Auth, ListController.deleteList);
 
 export default router;
