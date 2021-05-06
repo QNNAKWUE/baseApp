@@ -38,6 +38,24 @@ class ListController{
             })
         }
     }
+
+    static async getAllList(req, res){
+        try{
+            const list = await List.find().sort('name');
+            if(!list){
+                 res.status(404).send({
+                    status: 'failed',
+                    message: 'Could not get List'
+                });
+                res.json({list});
+            }
+        }catch(err){
+            return res.status(500).send({
+                status: 'failed',
+                message: 'Server error'
+            });
+        }
+    }
 }
 
 export default ListController;
