@@ -43,12 +43,15 @@ class ListController{
         try{
             const list = await List.find().sort('name');
             if(!list){
-                 res.status(404).send({
+                return res.status(404).send({
                     status: 'failed',
                     message: 'Could not get List'
                 });
-                res.json({list});
             }
+            return res.status(200).send({
+                status: 'success',
+                message: 'List fetched successfully'
+            });
         }catch(err){
             return res.status(500).send({
                 status: 'failed',
@@ -56,6 +59,30 @@ class ListController{
             });
         }
     }
+
+    static async getListById(req, res){
+        const {id} = req.params;
+        try{
+            const getList = await List.findById(id);
+            if(!getList) return res.status(404).send({status: 'failed', message: "The list with the given id wasn't found"});
+            return res.status(200).send({status: 'success', message:'List fetched successfully'})
+        }catch(err){
+            return res.status(500).send({
+                status: 'failed',
+                message: 'Server error'
+            });
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }
 
 export default ListController;

@@ -6,6 +6,6 @@ import ListController from '../controllers/ListController';
 const router = Router();
 
 router.post('/createList', Auth, Sanitize.listSanitizer, ListController.createListController);
-router.get('/get', Auth, ListController.getAllList)
+router.get('/getLists', Auth, ListController.getAllList)
 
 export default router;
