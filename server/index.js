@@ -1,21 +1,20 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/UserRoutes';
 import ListRoutes from './routes/ListRoutes';
 
 dotenv.config();
 
 const app = express();
 
-// This is a body parser middleware that allows 
+// This is a body parser middleware that allows
 // your express application to receive json body in the request
 app.use(express.json());
 
-//register routes
+// register routes
 
 app.use(userRoutes);
 app.use(ListRoutes);
-
 
 app.get('/', (req, res) => res.status(200).json({ message: 'Welcome to my TaskList API' }));
 

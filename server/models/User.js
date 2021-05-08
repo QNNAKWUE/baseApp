@@ -1,7 +1,5 @@
 import bcrypt from 'bcrypt';
 
-
-
 const User = [{
   id: 1,
   fullname: 'Nonso Amadi',
