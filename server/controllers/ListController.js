@@ -90,6 +90,23 @@ class ListController{
     }
 }
 
+static async deleteList(req, res){
+    const { name } = req.body.name;
+    const { id } = req.params;
+    const { userId } = req.user.id;
+    try{
+        const list = await List.findByIdAndRemove(req.params).sort("name");
+        if(!list) return res.status(404).send({status: 'failed', message: 'Could not delete list'});
+        return res.status(200).send({status: 'success', message: `${list.name} deleted successfully`, deleteList});
+}catch(err){
+    return res.status(500).send({
+        status: 'failed',
+        message: 'Server error'
+    });
+}
+
+}
+
 
 
 
