@@ -3,7 +3,10 @@ import List from '../models/List';
 class ListController {
   static async createListController(req, res) {
     const { name } = req.body;
+    // console.log('Ok');
+    // console.log('>>>>>', req.user)
     const userId = req.user.id;
+    
     try {
       const findListName = List.find((ListName) => ListName === name);
       if (findListName) {

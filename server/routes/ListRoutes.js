@@ -5,7 +5,7 @@ import ListController from '../controllers/ListController';
 
 const router = Router();
 
-router.post('/api/v1/list', Auth, Sanitize.listSanitizer, ListController.createListController);
+router.post('/api/v1/list', Sanitize.listSanitizer, ListController.createListController);
 router.get('/api/v1/list', Auth, ListController.getAllList);
 router.get('/api/v1/list/:id', ListController.getListById);
 router.patch('/api/v1/list/:id', Auth, ListController.updateList);
