@@ -1,15 +1,21 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import connectDB from '../config/db';
+import bodyParser from 'body-parser';
 import userRoutes from './routes/UserRoutes';
 import ListRoutes from './routes/ListRoutes';
 
-dotenv.config();
+//Load config
+dotenv.config({path: "./config/config.env"});
+
+connectDB();
 
 const app = express();
 
 // This is a body parser middleware that allows
 // your express application to receive json body in the request
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // register routes
 

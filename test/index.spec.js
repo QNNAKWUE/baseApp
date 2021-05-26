@@ -65,22 +65,3 @@ describe('User should be able to login', () => {
       });
   });
 });
-
-
-describe('User should be able to create list', () => {
-  it('should create a list', (done) => {
-    chai.request(app)
-      .post('/api/v1/list')
-      .send({
-        name: 'write a book',
-        userId: '1'
-      })
-      .end((err, res) => {
-        console.log(res);
-        expect(res.status).to.equal(200);
-        
-        //expect(res.body.data).to.have.all.keys(['id', 'name', 'userId', 'createdAt']);
-        
-      });
-  });
-});
